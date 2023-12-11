@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webapp
+spec:
+  template:
+    metadata:
+      labels:
+        app: webapp
+    spec:
+      containers:
+        - name: webapp
+          image: nginx
+  selector:
+    matchLabels:
+      app: webapp
+  replicas: 2
+
+# acessando o mysql-pod atraves do webapp
+# mysql -h 10.244.0.3 -uroot -ppassword geek
+#10.244.0.3
+# nslookup kubernetes
